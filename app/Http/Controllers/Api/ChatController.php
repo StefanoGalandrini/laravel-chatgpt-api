@@ -12,7 +12,7 @@ class ChatController extends Controller
     public function index(Request $request)
     {
         $nameCharacter = $request->input('nameCharacter');
-        $userQuestion = $request->input('question');
+        $action = $request->input('action');
         $temperature = 0.7;
 
         $response = Http::withoutVerifying()->withHeaders([
@@ -23,13 +23,14 @@ class ChatController extends Controller
             'messages' => [
                 [
                     'role' => 'user',
-                    'content' => "Sei ${nameCharacter}, uno dei protagonisti del libro 'Il Signore degli Anelli'. ${userQuestion}"
+                    'content' => "Sei ${nameCharacter}, uno dei protagonistti del libro 'Il Signore degli Anelli', e ti chiedo di ${action} con un massimo di 200 caratteri senza mai uscire dal tuo personaggio"
                 ]
             ],
             'temperature' => $temperature
         ]);
 
         $data = $response->json();
+
         $message = $data['choices'][0]['message']['content'];
 
         return response()->json([
