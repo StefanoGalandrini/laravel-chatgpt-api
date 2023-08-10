@@ -23,7 +23,7 @@ class ChatController extends Controller
             'messages' => [
                 [
                     'role' => 'user',
-                    'content' => "Sei ${nameCharacter}, uno dei protagonistti del libro 'Il Signore degli Anelli', e ti chiedo di ${action} con un massimo di 200 caratteri senza mai uscire dal tuo personaggio"
+                    'content' => "Sei ${nameCharacter}, uno dei protagonistti del libro 'Il Signore degli Anelli', e ti chiedo di ${action} con un massimo di 200 caratteri e un minimo di 100 caratteri senza mai uscire dal tuo personaggio"
                 ]
             ],
             'temperature' => $temperature
