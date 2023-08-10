@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('/chat', [ChatController::class, 'index']);
+Route::post('/chat', [ChatController::class, 'chat'])->name('api.chat');
+Route::post('/image', [ChatController::class, 'image'])->name('api.image');
