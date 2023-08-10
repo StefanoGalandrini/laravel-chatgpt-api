@@ -11,8 +11,7 @@ class ChatController extends Controller
 {
     public function chat(Request $request)
     {
-        $nameCharacter = $request->input('nameCharacter');
-        $action = $request->input('action');
+        $prompt = $request->input('prompt');
         $temperature = 0.7;
 
         $response = Http::withoutVerifying()->withHeaders([
@@ -23,7 +22,7 @@ class ChatController extends Controller
             'messages' => [
                 [
                     'role' => 'user',
-                    'content' => "Sei ${nameCharacter}, uno dei protagonisti del libro 'Il Signore degli Anelli', e ti chiedo di ${action} con un massimo di 200 caratteri e un minimo di 100 caratteri senza mai uscire dal tuo personaggio"
+                    'content' => $prompt,
                 ]
             ],
             'temperature' => $temperature
